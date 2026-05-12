@@ -257,7 +257,7 @@ function [SM0] = SumMat(Y0,T)
     idx = find(triu(ones(nn),1))';
     SM0 = zeros(nn,nn,T);
     for i=idx
-        [x,y]      = ind2sub(nn,i);
+        [x,y]      = ind2sub([nn 1],i);
         SM0(x,y,:) = (Y0(:,x)+Y0(:,y));
         SM0(y,x,:) = (Y0(:,y)+Y0(:,x));
     end
@@ -275,7 +275,7 @@ function [SM0] = ProdMat(Y0,T)
     idx = find(triu(ones(nn),1))';
     SM0 = zeros(nn,nn,T);
     for i=idx
-        [x,y]      = ind2sub(nn,i);
+        [x,y]      = ind2sub([nn 1],i);
         SM0(x,y,:) = (Y0(:,x).*Y0(:,y));
         SM0(y,x,:) = (Y0(:,y).*Y0(:,x));
     end
